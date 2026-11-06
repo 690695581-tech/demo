@@ -1,0 +1,548 @@
+/* ============================================================
+   Fluent 主题覆盖层
+   只改视觉属性（颜色 / 字体 / 圆角 / 阴影 / 边框），不动布局尺寸
+   ============================================================ */
+
+:root {
+  --fluent-accent: #0078d4;
+  --fluent-accent-hover: #106ebe;
+  --fluent-accent-pressed: #005a9e;
+  --fluent-accent-soft: #deecf9;
+  --fluent-bg: #faf9f8;
+  --fluent-surface: #ffffff;
+  --fluent-subtle: #f3f2f1;
+  --fluent-border: #edebe9;
+  --fluent-border-strong: #d2d0ce;
+  --fluent-text: #201f1e;
+  --fluent-text-2: #605e5c;
+  --fluent-text-3: #a19f9d;
+  --fluent-radius: 6px;
+  --fluent-radius-sm: 4px;
+  --fluent-radius-lg: 8px;
+  --fluent-shadow-2: 0 1px 2px rgba(0,0,0,.06), 0 0 2px rgba(0,0,0,.04);
+  --fluent-shadow-4: 0 2px 6px rgba(0,0,0,.07), 0 0 2px rgba(0,0,0,.04);
+  --fluent-shadow-8: 0 8px 16px rgba(0,0,0,.08), 0 0 2px rgba(0,0,0,.04);
+  --fluent-font: "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei",
+                 system-ui, -apple-system, "PingFang SC", sans-serif;
+}
+
+/* ---------- Bootstrap 5 变量层 ---------- */
+:root,
+[data-bs-theme="light"] {
+  --bs-primary: #0078d4;
+  --bs-primary-rgb: 0, 120, 212;
+  --bs-body-bg: #faf9f8;
+  --bs-body-color: #201f1e;
+  --bs-border-color: #edebe9;
+  --bs-border-radius: 6px;
+  --bs-border-radius-sm: 4px;
+  --bs-border-radius-lg: 8px;
+  --bs-link-color: #0078d4;
+  --bs-link-hover-color: #106ebe;
+  --bs-font-sans-serif: var(--fluent-font);
+  --bs-body-font-family: var(--fluent-font);
+  --bs-secondary-bg: #f3f2f1;
+  --bs-tertiary-bg: #faf9f8;
+}
+
+body {
+  font-family: var(--fluent-font) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--fluent-bg);
+  color: var(--fluent-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fluent-font);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+/* ---------- 卡片 / 容器 ---------- */
+.card,
+.widget,
+.small-box,
+.info-box,
+.box,
+.panel {
+  border: 1px solid var(--fluent-border) !important;
+  border-radius: var(--fluent-radius-lg) !important;
+  box-shadow: var(--fluent-shadow-2) !important;
+  background-color: var(--fluent-surface);
+}
+
+.card-header,
+.widget-header {
+  background-color: var(--fluent-surface) !important;
+  border-bottom: 1px solid var(--fluent-border) !important;
+  font-weight: 600;
+}
+
+.card-footer {
+  background-color: var(--fluent-surface) !important;
+  border-top: 1px solid var(--fluent-border) !important;
+}
+
+/* ---------- 按钮 ---------- */
+.btn {
+  border-radius: var(--fluent-radius) !important;
+  font-weight: 500;
+  font-family: var(--fluent-font);
+  box-shadow: none !important;
+  transition: background-color .12s ease, border-color .12s ease, color .12s ease;
+}
+.btn-primary {
+  background-color: var(--fluent-accent) !important;
+  border-color: var(--fluent-accent) !important;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--fluent-accent-hover) !important;
+  border-color: var(--fluent-accent-hover) !important;
+}
+.btn-outline-primary {
+  color: var(--fluent-accent) !important;
+  border-color: var(--fluent-border-strong) !important;
+  background-color: transparent !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--fluent-accent-soft) !important;
+  color: var(--fluent-accent-pressed) !important;
+  border-color: var(--fluent-border-strong) !important;
+}
+.btn-secondary, .btn-default {
+  background-color: var(--fluent-surface) !important;
+  border-color: var(--fluent-border-strong) !important;
+  color: var(--fluent-text) !important;
+}
+
+/* ---------- 表单 ---------- */
+.form-control,
+.form-select,
+.custom-select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  border-radius: var(--fluent-radius) !important;
+  border-color: var(--fluent-border-strong) !important;
+  font-family: var(--fluent-font);
+  transition: border-color .12s ease, box-shadow .12s ease;
+}
+.form-control:focus,
+.form-select:focus,
+.custom-select:focus,
+textarea:focus {
+  border-color: var(--fluent-accent) !important;
+  box-shadow: 0 0 0 1px var(--fluent-accent) !important;
+}
+
+/* ---------- 表格 ---------- */
+.table {
+  --bs-table-border-color: var(--fluent-border);
+  font-family: var(--fluent-font);
+}
+.table > :not(caption) > * > * {
+  border-bottom-color: var(--fluent-border) !important;
+}
+.table thead th {
+  font-weight: 600;
+  color: var(--fluent-text-2);
+  font-size: 13px;
+  letter-spacing: .01em;
+}
+
+/* ---------- 导航 ---------- */
+.navbar,
+.main-header,
+.app-header,
+.topbar {
+  background-color: var(--fluent-surface) !important;
+  border-bottom: 1px solid var(--fluent-border) !important;
+  box-shadow: none !important;
+}
+
+/* ---------- 下拉 / 弹层 ---------- */
+.dropdown-menu {
+  border: 1px solid var(--fluent-border) !important;
+  border-radius: var(--fluent-radius-lg) !important;
+  box-shadow: var(--fluent-shadow-8) !important;
+  padding: 4px;
+}
+.dropdown-item {
+  border-radius: var(--fluent-radius-sm);
+  font-size: 14px;
+}
+.dropdown-item:hover {
+  background-color: var(--fluent-subtle) !important;
+}
+
+.modal-content {
+  border: 1px solid var(--fluent-border) !important;
+  border-radius: var(--fluent-radius-lg) !important;
+  box-shadow: var(--fluent-shadow-8) !important;
+}
+
+/* ---------- 其它 ---------- */
+a { color: var(--fluent-accent); }
+a:hover { color: var(--fluent-accent-hover); }
+
+.badge {
+  border-radius: var(--fluent-radius-sm);
+  font-weight: 500;
+  font-family: var(--fluent-font);
+}
+
+.alert {
+  border-radius: var(--fluent-radius);
+  border-width: 1px;
+}
+
+.progress {
+  border-radius: 999px;
+  background-color: var(--fluent-subtle);
+}
+.progress-bar {
+  border-radius: 999px;
+  background-color: var(--fluent-accent);
+}
+
+hr { border-color: var(--fluent-border); opacity: 1; }
+
+/* ============================================================
+   深度覆盖：侧边栏 / 统计卡 / 品牌区
+   ============================================================ */
+
+/* ---- 侧边栏改浅色 ---- */
+.app-sidebar,
+.main-sidebar,
+.sidebar-wrapper {
+  background-color: var(--fluent-bg) !important;
+  border-right: 1px solid var(--fluent-border) !important;
+  box-shadow: none !important;
+}
+
+.sidebar-brand,
+.brand-link {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--fluent-border) !important;
+  color: var(--fluent-text) !important;
+}
+.brand-text,
+.sidebar-brand .brand-text {
+  color: var(--fluent-text) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-menu .nav-link,
+.nav-sidebar .nav-link,
+.sidebar-menu .nav-header,
+.nav-sidebar .nav-header {
+  color: var(--fluent-text-2) !important;
+  border-radius: var(--fluent-radius) !important;
+  font-size: 13.5px;
+}
+.sidebar-menu .nav-link,
+.nav-sidebar .nav-link {
+  margin: 1px 8px;
+  padding: 8px 12px;
+  transition: background-color .12s ease, color .12s ease;
+}
+.sidebar-menu .nav-link:hover,
+.nav-sidebar .nav-link:hover {
+  background-color: var(--fluent-subtle) !important;
+  color: var(--fluent-text) !important;
+}
+.sidebar-menu .nav-link.active,
+.nav-sidebar .nav-link.active,
+.sidebar-menu .nav-link:focus {
+  background-color: var(--fluent-accent-soft) !important;
+  color: var(--fluent-accent-pressed) !important;
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--fluent-accent);
+}
+.sidebar-menu .nav-header {
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fluent-text-3) !important;
+  padding: 14px 20px 6px;
+}
+.sidebar-menu .nav-icon,
+.nav-sidebar .nav-icon {
+  color: inherit !important;
+  opacity: .85;
+}
+.sidebar-search input,
+.sidebar-search .form-control {
+  background-color: var(--fluent-surface) !important;
+  border: 1px solid var(--fluent-border) !important;
+  border-radius: var(--fluent-radius) !important;
+  color: var(--fluent-text) !important;
+  font-size: 13px;
+}
+
+/* ---- 统计卡：白底 + 彩色侧条 ---- */
+.small-box {
+  background-color: var(--fluent-surface) !important;
+  color: var(--fluent-text) !important;
+  border: 1px solid var(--fluent-border) !important;
+  border-radius: var(--fluent-radius-lg) !important;
+  box-shadow: var(--fluent-shadow-2) !important;
+  overflow: hidden;
+}
+.small-box .inner h3,
+.small-box .inner p {
+  color: var(--fluent-text) !important;
+}
+.small-box .inner h3 { font-weight: 600; letter-spacing: -0.02em; }
+.small-box .inner p { color: var(--fluent-text-2) !important; font-size: 13px; }
+.small-box .icon,
+.small-box .icon i {
+  color: var(--fluent-text-3) !important;
+  opacity: .5;
+}
+.small-box-footer {
+  background-color: var(--fluent-bg) !important;
+  color: var(--fluent-text-2) !important;
+  border-top: 1px solid var(--fluent-border);
+}
+.small-box-footer:hover {
+  background-color: var(--fluent-subtle) !important;
+  color: var(--fluent-text) !important;
+}
+.small-box.text-bg-primary { border-left: 3px solid #0078d4 !important; }
+.small-box.text-bg-success { border-left: 3px solid #107c10 !important; }
+.small-box.text-bg-danger  { border-left: 3px solid #d13438 !important; }
+.small-box.text-bg-warning { border-left: 3px solid #f7b500 !important; }
+.small-box.text-bg-info    { border-left: 3px solid #00b7c3 !important; }
+
+/* ---- 信息框 ---- */
+.info-box {
+  background-color: var(--fluent-surface) !important;
+  border: 1px solid var(--fluent-border) !important;
+  border-radius: var(--fluent-radius-lg) !important;
+  box-shadow: var(--fluent-shadow-2) !important;
+  color: var(--fluent-text) !important;
+}
+.info-box-icon {
+  border-radius: var(--fluent-radius) !important;
+  background-color: var(--fluent-accent-soft) !important;
+  color: var(--fluent-accent) !important;
+}
+.info-box-text, .info-box-number { color: var(--fluent-text) !important; }
+
+/* ---- 顶部栏 ---- */
+.app-header,
+.main-header,
+.navbar,
+.navbar-white {
+  background-color: var(--fluent-surface) !important;
+  border-bottom: 1px solid var(--fluent-border) !important;
+  box-shadow: none !important;
+}
+.app-header .nav-link,
+.main-header .nav-link {
+  color: var(--fluent-text-2) !important;
+  border-radius: var(--fluent-radius-sm);
+}
+.app-header .nav-link:hover {
+  background-color: var(--fluent-subtle) !important;
+  color: var(--fluent-text) !important;
+}
+
+/* ---- 面包屑 / 标题 ---- */
+.breadcrumb { font-size: 13px; }
+.breadcrumb-item a { color: var(--fluent-accent) !important; }
+.app-content-header h3,
+.content-header h1 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--fluent-text);
+}
+
+/* ---- 图表卡内边距统一 ---- */
+.card-body { color: var(--fluent-text); }
+
+/* ---- 大数字仪表 ---- */
+.small-box h3 { font-feature-settings: "tnum"; }
+
+/* ---- 侧边栏文字对比度修正（原模板给的是白色文字）---- */
+.app-sidebar,
+.app-sidebar .nav-link,
+.app-sidebar .nav-link span,
+.app-sidebar .nav-link p,
+.app-sidebar .nav-link i,
+.app-sidebar .nav-link .nav-icon,
+.app-sidebar .nav-header,
+.app-sidebar .nav-group-label,
+.app-sidebar .brand-text {
+  color: #51504e !important;
+}
+.app-sidebar .nav-link:hover,
+.app-sidebar .nav-link:hover span,
+.app-sidebar .nav-link:hover i {
+  color: var(--fluent-text) !important;
+}
+.app-sidebar .nav-link.active,
+.app-sidebar .nav-link.active span,
+.app-sidebar .nav-link.active i {
+  color: var(--fluent-accent-pressed) !important;
+}
+.app-sidebar input,
+.app-sidebar .form-control {
+  color: var(--fluent-text) !important;
+  background-color: #fff !important;
+}
+.app-sidebar input::placeholder,
+.sidebar-search input::placeholder {
+  color: var(--fluent-text-3) !important;
+}
+.app-sidebar .badge {
+  background-color: #e1dfdd !important;
+  color: #444 !important;
+}
+
+/* ---- SB Admin 2 侧边栏（Bootstrap 4，原为蓝色渐变）---- */
+.sidebar,
+#sidebar-wrapper,
+.sb-sidenav,
+.bg-gradient-primary {
+  background-color: var(--fluent-bg) !important;
+  background-image: none !important;
+  border-right: 1px solid var(--fluent-border);
+  color: #51504e !important;
+}
+.sidebar a,
+.sidebar .nav-link,
+.sidebar .nav-item,
+#sidebar-wrapper a {
+  color: #51504e !important;
+}
+.sidebar .nav-link:hover,
+.sidebar a:hover {
+  background-color: var(--fluent-subtle) !important;
+  color: var(--fluent-text) !important;
+}
+.sidebar .nav-link.active,
+.sidebar a.active {
+  background-color: var(--fluent-accent-soft) !important;
+  color: var(--fluent-accent-pressed) !important;
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--fluent-accent);
+}
+.sidebar .sidebar-heading,
+.sidebar .small,
+.sidebar .text-gray-400 {
+  color: var(--fluent-text-3) !important;
+}
+.sidebar hr,
+.sidebar .sidebar-divider {
+  border-top-color: var(--fluent-border) !important;
+  opacity: 1;
+}
+.sidebar .card,
+.sidebar .bg-white {
+  background-color: var(--fluent-surface) !important;
+  border: 1px solid var(--fluent-border) !important;
+}
+.sidebar .btn-success {
+  background-color: var(--fluent-accent) !important;
+  border-color: var(--fluent-accent) !important;
+  border-radius: var(--fluent-radius) !important;
+}
+.sidebar .text-white,
+.sidebar .text-white-50 {
+  color: var(--fluent-text-2) !important;
+}
+
+/* ---- 通用：统一按钮与输入圆角（Bootstrap 4 类）---- */
+.btn,
+.btn-sm,
+.btn-lg,
+.form-control,
+.custom-select,
+.input-group-text {
+  border-radius: var(--fluent-radius) !important;
+}
+
+/* ---- SB Admin 侧栏底部推广卡：改白底可读 ---- */
+.sidebar .bg-gradient-primary {
+  background-color: #fff !important;
+  background-image: none !important;
+  border: 1px solid var(--fluent-border) !important;
+}
+.sidebar .bg-gradient-primary .text-white,
+.sidebar .bg-gradient-primary h6,
+.sidebar .bg-gradient-primary p,
+.sidebar .bg-gradient-primary div,
+.sidebar .bg-gradient-primary small {
+  color: #444 !important;
+}
+.sidebar .bg-gradient-primary .btn {
+  background-color: var(--fluent-accent) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+/* ---- 菜单文字加深 ---- */
+.sidebar .nav-link,
+.sidebar a.nav-link,
+#sidebar-wrapper .nav-link,
+.sidebar .nav-link span {
+  color: #3b3a38 !important;
+}
+.sidebar .nav-link:hover,
+.sidebar a.nav-link:hover {
+  background-color: var(--fluent-subtle) !important;
+  color: #111 !important;
+}
+.sidebar .nav-link.active {
+  background-color: var(--fluent-accent-soft) !important;
+  color: var(--fluent-accent-pressed) !important;
+}
+
+/* ---- SB Admin 侧栏：工具类文字统一加深 ---- */
+.sidebar .text-gray-600,
+.sidebar .text-gray-700,
+.sidebar .text-gray-800,
+.sidebar .text-gray-900,
+.sidebar span,
+.sidebar small,
+.sidebar p {
+  color: #3b3a38 !important;
+}
+.sidebar .nav-link.active span,
+.sidebar .nav-link.active {
+  color: var(--fluent-accent-pressed) !important;
+}
+.sidebar .sidebar-heading {
+  color: #9a9895 !important;
+}
+/* 隐藏模板自带的付费版推广卡 */
+.sidebar .bg-gradient-primary,
+.sidebar-card {
+  display: none !important;
+}
+
+/* ---- 折叠菜单的 collapsed 状态优先级高于通用规则，单独覆盖 ---- */
+.sidebar .nav-link.collapsed,
+.sidebar a.nav-link.collapsed,
+#sidebar-wrapper .nav-link.collapsed {
+  color: #3b3a38 !important;
+}
+.sidebar .nav-link.collapsed span,
+.sidebar a.nav-link.collapsed span {
+  color: #3b3a38 !important;
+}
+.sidebar .collapse .nav-link,
+.sidebar .collapse-inner .collapse-item {
+  color: #52504e !important;
+  border-radius: var(--fluent-radius);
+}
+.sidebar .collapse .nav-link:hover,
+.sidebar .collapse-inner .collapse-item:hover {
+  background-color: var(--fluent-subtle) !important;
+  color: #111 !important;
+}
