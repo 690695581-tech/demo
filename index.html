@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案例演示 · 网站 / 小程序 / 后台系统</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: #f5f6f8;
+    color: #1a1a1a;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 72px 0 56px; border-bottom: 1px solid #e5e7eb; }
+  .badge {
+    display: inline-block; font-size: 12px; letter-spacing: 1.5px;
+    color: #6b7280; text-transform: uppercase; margin-bottom: 20px;
+    border: 1px solid #dcdfe4; border-radius: 3px; padding: 4px 10px;
+  }
+  h1 { font-size: 38px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 16px; }
+  .lead { font-size: 17px; color: #5b6270; max-width: 620px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 56px 0; }
+
+  .card {
+    background: #fff; border: 1px solid #e8eaed; border-radius: 8px;
+    padding: 28px; display: flex; flex-direction: column;
+    transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+  }
+  .card:hover {
+    box-shadow: 0 8px 28px rgba(20,25,40,.09);
+    transform: translateY(-3px);
+    border-color: #d0d4da;
+  }
+  .num {
+    font-size: 12px; font-weight: 600; color: #9aa1ad;
+    letter-spacing: 1px; margin-bottom: 14px;
+  }
+  .card h2 { font-size: 19px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.2px; }
+  .card p { font-size: 14px; color: #5b6270; flex-grow: 1; margin-bottom: 20px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+  .tag {
+    font-size: 11.5px; color: #4b5563; background: #f3f4f6;
+    border-radius: 3px; padding: 3px 8px;
+  }
+
+  .btn {
+    display: block; text-align: center; text-decoration: none;
+    font-size: 14px; font-weight: 500; color: #fff; background: #1f2937;
+    border-radius: 5px; padding: 11px 16px; transition: background .18s ease;
+  }
+  .btn:hover { background: #111827; }
+
+  footer {
+    border-top: 1px solid #e5e7eb; padding: 40px 0 64px;
+    font-size: 14px; color: #5b6270;
+  }
+  footer strong { color: #1a1a1a; font-weight: 600; }
+  .mail { font-family: ui-monospace, "SF Mono", Consolas, monospace; color: #1f2937; }
+
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+    header { padding: 48px 0 36px; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="badge">Demo Gallery</div>
+    <h1>网站 / 小程序 / 后台系统</h1>
+    <p class="lead">
+      下面三套是可交付的工程骨架，不是静态效果图。每套都包含完整源码，
+      可以直接在业务逻辑层改造，替换成你的行业内容。
+    </p>
+  </header>
+
+  <main class="grid">
+    <div class="card">
+      <div class="num">01</div>
+      <h2>企业官网</h2>
+      <p>单页式企业站，含响应式布局、滚动动效、作品展示与服务区块。适合公司官网、工作室主页、产品介绍页。</p>
+      <div class="tags">
+        <span class="tag">HTML5</span>
+        <span class="tag">Bootstrap 5</span>
+        <span class="tag">原生 JS</span>
+        <span class="tag">响应式</span>
+      </div>
+      <a class="btn" href="agency/index.html" target="_blank" rel="noopener">查看演示</a>
+    </div>
+
+    <div class="card">
+      <div class="num">02</div>
+      <h2>后台管理 · 基础版</h2>
+      <p>含登录、注册、数据表格、图表、卡片布局与 404 页。结构轻，改起来快，适合中小型系统的管理端。</p>
+      <div class="tags">
+        <span class="tag">Bootstrap 4</span>
+        <span class="tag">Chart.js</span>
+        <span class="tag">jQuery</span>
+        <span class="tag">响应式</span>
+      </div>
+      <a class="btn" href="admin-sb/index.html" target="_blank" rel="noopener">查看演示</a>
+    </div>
+
+    <div class="card">
+      <div class="num">03</div>
+      <h2>后台管理 · 完整版</h2>
+      <p>多套皮肤、仪表盘、表单组件、邮箱、用户管理、日历、图表的完整页面集。适合功能较重的业务系统。</p>
+      <div class="tags">
+        <span class="tag">Bootstrap 5</span>
+        <span class="tag">AdminLTE</span>
+        <span class="tag">组件库</span>
+        <span class="tag">多皮肤</span>
+      </div>
+      <a class="btn" href="adminlte/index.html" target="_blank" rel="noopener">查看演示</a>
+    </div>
+  </main>
+
+  <footer>
+    <p style="margin-bottom:10px">
+      <strong>需要类似的项目？</strong> 把功能清单发我，我按模块拆工期和报价。
+    </p>
+    <p>邮箱：<span class="mail" id="mail"></span></p>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var b = "a2F6YW15dXVqaTQ4NkBnbWFpbC5jb20=";
+    document.getElementById("mail").textContent = atob(b);
+  })();
+</script>
+
+</body>
+</html>
