@@ -6,133 +6,86 @@
 <title>项目案例 · 网站 / 小程序 / 后台系统</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
-    background: #fbfbfa;
-    color: #18181b;
-    line-height: 1.6;
+    background: #fff;
+    color: #171717;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
 
-  /* ---------- nav ---------- */
   nav {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(251,251,250,.82);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    border-bottom: 1px solid #e8e8e5;
+    background: rgba(255,255,255,.9);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid #ebebeb;
   }
   .nav-in {
-    max-width: 860px; margin: 0 auto; padding: 14px 24px;
+    max-width: 820px; margin: 0 auto; padding: 13px 24px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .brand { font-size: 14.5px; font-weight: 600; letter-spacing: -0.2px; }
-  .brand span { color: #9a9a96; font-weight: 400; margin-left: 8px; font-size: 13px; }
+  .brand { font-size: 14px; font-weight: 600; }
+  .brand i { font-style: normal; color: #a3a3a3; font-weight: 400; margin-left: 10px; font-size: 12.5px; }
 
-  .lang-switch {
-    display: inline-flex; background: #efefec; border-radius: 999px; padding: 3px;
-  }
+  .lang-switch { display: inline-flex; border: 1px solid #e5e5e5; border-radius: 4px; overflow: hidden; }
   .lang-switch button {
-    border: 0; background: transparent; cursor: pointer;
-    font-size: 12.5px; font-weight: 500; color: #71717a;
-    padding: 4px 13px; border-radius: 999px;
-    font-family: inherit; transition: all .18s ease;
+    border: 0; background: #fff; cursor: pointer;
+    font-size: 12px; font-weight: 500; color: #737373;
+    padding: 5px 12px; font-family: inherit; transition: background .15s, color .15s;
   }
-  .lang-switch button.active { background: #fff; color: #18181b; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .lang-switch button + button { border-left: 1px solid #e5e5e5; }
+  .lang-switch button.active { background: #171717; color: #fff; }
 
-  /* ---------- hero ---------- */
-  .hero { padding: 76px 0 52px; }
-  .hero h1 {
-    font-size: 40px; font-weight: 600; letter-spacing: -1px;
-    line-height: 1.25; margin-bottom: 20px;
-  }
-  .hero p { font-size: 15.5px; color: #63636b; max-width: 520px; line-height: 1.75; }
+  .hero { padding: 64px 0 40px; }
+  .hero h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.6px; margin-bottom: 14px; }
+  .hero p { font-size: 15px; color: #5f5f5f; max-width: 560px; line-height: 1.8; }
 
-  /* ---------- list ---------- */
-  .list { padding-bottom: 40px; display: flex; flex-direction: column; gap: 32px; }
+  .list { display: flex; flex-direction: column; gap: 44px; padding: 36px 0 12px; }
 
-  .item {
-    display: block; text-decoration: none; color: inherit;
-    background: #fff; border: 1px solid #e8e8e5; border-radius: 12px;
-    overflow: hidden; transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
+  .item { display: block; text-decoration: none; color: inherit; }
+  .thumb {
+    display: block; border: 1px solid #e5e5e5; border-radius: 5px;
+    overflow: hidden; background: #fafafa; line-height: 0;
+    transition: border-color .2s ease, box-shadow .2s ease;
   }
-  .item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(24,24,27,.08);
-    border-color: #d6d6d1;
+  .thumb img {
+    width: 100%; height: 250px; object-fit: cover; object-position: top center;
+    display: block; transition: opacity .2s ease;
   }
+  .item:hover .thumb { border-color: #c9c9c9; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+  .item:hover .thumb img { opacity: .94; }
 
-  .cover {
-    height: 216px; position: relative; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-    border-bottom: 1px solid #eee;
-  }
-  .cover::after {
-    content: ''; position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,.5) 1px, transparent 1px);
-    background-size: 20px 20px; opacity: .5;
-  }
-  .cover .idx {
-    position: relative; z-index: 1;
-    font-size: 76px; font-weight: 700; letter-spacing: -3px;
-    color: rgba(255,255,255,.9);
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-  }
-  .cover .kind {
-    position: absolute; right: 20px; bottom: 16px; z-index: 1;
-    font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
-    color: rgba(255,255,255,.72);
-  }
+  .meta { font-size: 12.5px; color: #8c8c8c; margin: 16px 0 6px; }
+  .item h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 7px; }
+  .item .desc { font-size: 14px; color: #5f5f5f; line-height: 1.75; margin-bottom: 13px; }
 
-  .c1 { background: linear-gradient(135deg, #d98b3a 0%, #b5652c 55%, #8f4a20 100%); }
-  .c2 { background: linear-gradient(135deg, #4a6076 0%, #35485c 55%, #26323f 100%); }
-  .c3 { background: linear-gradient(135deg, #545c9c 0%, #3d4478 55%, #2b3054 100%); }
-
-  .body { padding: 24px 26px 26px; }
-  .cat { font-size: 12.5px; color: #8a8a85; margin-bottom: 8px; letter-spacing: .2px; }
-  .item h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 8px; }
-  .item .desc { font-size: 14px; color: #63636b; line-height: 1.7; margin-bottom: 16px; }
-
-  .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag {
-    font-size: 11.5px; color: #52525b; background: #f4f4f1;
-    border: 1px solid #eaeae6; border-radius: 4px; padding: 2px 8px;
+    font-size: 11.5px; color: #525252; background: #f6f6f6;
+    border: 1px solid #eeeeee; border-radius: 3px; padding: 2px 7px;
   }
+  .view { font-size: 13px; color: #171717; font-weight: 500; white-space: nowrap; }
+  .item:hover .view { text-decoration: underline; text-underline-offset: 3px; }
 
-  .more {
-    margin-top: 18px; display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13.5px; font-weight: 500; color: #18181b;
-  }
-  .more .arw { transition: transform .2s ease; }
-  .item:hover .more .arw { transform: translateX(3px); }
-  .more .line {
-    display: inline-block; width: 18px; height: 1px; background: #c8c8c2;
-  }
-
-  /* ---------- footer ---------- */
-  footer {
-    border-top: 1px solid #e8e8e5; padding: 36px 0 64px;
-    font-size: 14px; color: #63636b;
-  }
-  footer strong { color: #18181b; font-weight: 600; }
+  footer { border-top: 1px solid #ebebeb; padding: 32px 0 72px; font-size: 14px; color: #5f5f5f; margin-top: 48px; }
+  footer strong { color: #171717; font-weight: 600; }
   .mail {
     font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    color: #18181b; text-decoration: none;
-    border-bottom: 1px solid #d4d4cf; padding-bottom: 1px;
+    color: #171717; text-decoration: underline; text-underline-offset: 3px;
+    text-decoration-color: #d4d4d4;
   }
-  .mail:hover { border-color: #18181b; }
+  .mail:hover { text-decoration-color: #171717; }
 
   @media (max-width: 700px) {
-    .hero { padding: 52px 0 36px; }
-    .hero h1 { font-size: 29px; letter-spacing: -0.6px; }
-    .hero p { font-size: 14.5px; }
-    .cover { height: 168px; }
-    .cover .idx { font-size: 58px; }
-    .body { padding: 20px 20px 22px; }
-    .item h3 { font-size: 18px; }
-    .list { gap: 22px; }
+    .hero { padding: 44px 0 28px; }
+    .hero h1 { font-size: 25px; }
+    .hero p { font-size: 14px; }
+    .thumb img { height: 175px; }
+    .list { gap: 34px; }
+    .item h3 { font-size: 17.5px; }
   }
 </style>
 </head>
@@ -140,7 +93,7 @@
 
 <nav>
   <div class="nav-in">
-    <div class="brand" data-i18n="brand">项目案例<span data-i18n="brandsub">Web / Mini Program / Admin</span></div>
+    <div class="brand"><span data-i18n="brand">项目案例</span><i data-i18n="brandsub">网站 / 小程序 / 后台</i></div>
     <div class="lang-switch">
       <button type="button" data-lang="zh" class="active">中文</button>
       <button type="button" data-lang="en">EN</button>
@@ -151,16 +104,14 @@
 <main class="wrap">
   <section class="hero">
     <h1 data-i18n="h1">可交付的项目骨架</h1>
-    <p data-i18n="lead">
-      每套都在这里说明交付范围、技术栈和维护边界。全部包含完整源码，不是效果图，可以直接在业务逻辑层改造。
-    </p>
+    <p data-i18n="lead">每套都标明了交付范围、技术栈和维护边界。全部包含完整源码，可以直接在业务逻辑层改造，不是效果图。</p>
   </section>
 
   <section class="list" id="list"></section>
 
   <footer>
-    <p style="margin-bottom:10px">
-      <strong data-i18n="fstrong">需要类似的项目？</strong><span data-i18n="ftext"> 把功能清单发我，我按模块拆解工期和报价。</span>
+    <p style="margin-bottom:8px">
+      <strong data-i18n="fstrong">需要类似的项目？</strong><span data-i18n="ftext"> 把功能清单发我，按模块拆解工期和报价。</span>
     </p>
     <p><span data-i18n="fmail">邮箱：</span><a class="mail" id="mail" href="#"></a></p>
   </footer>
@@ -168,63 +119,63 @@
 
 <script>
 (function () {
-  var PROJECTS = [
+  var P = [
     {
-      idx: '01', cls: 'c1',
-      kind: { zh: 'Brand / Corporate', en: 'Brand / Corporate' },
-      cat: { zh: '企业官网 · 品牌展示', en: 'Corporate site · Brand' },
+      img: 'covers/agency.jpg',
+      cat:   { zh: '企业官网 · 品牌展示', en: 'Corporate site · Brand' },
       title: { zh: '企业官网', en: 'Corporate Website' },
-      desc: {
+      desc:  {
         zh: '单页式企业站，含响应式布局、滚动入场动效、作品展示、服务区块与联系表单。适合公司官网、工作室主页、产品介绍页。',
-        en: 'Single-page corporate site with responsive layout, scroll-in animations, portfolio, services and contact form. Suited to company sites, studio homepages and product pages.'
+        en: 'Single-page corporate site with responsive layout, scroll-in animations, portfolio, services and a contact form. Suited to company sites, studio homepages and product pages.'
       },
-      tags: ['HTML5', 'Bootstrap 5', 'Vanilla JS', 'Responsive'],
+      meta:  { zh: '单页 · 含源码 · 3–5 天可交付', en: 'Single page · Source included · 3–5 days' },
+      tags: ['HTML5', 'Bootstrap 5', 'Vanilla JS'],
       href: 'agency/index.html'
     },
     {
-      idx: '02', cls: 'c2',
-      kind: { zh: 'Admin / Starter', en: 'Admin / Starter' },
-      cat: { zh: '后台管理 · 基础版', en: 'Admin panel · Starter' },
+      img: 'covers/sb-admin.jpg',
+      cat:   { zh: '后台管理 · 基础版', en: 'Admin panel · Starter' },
       title: { zh: '后台管理系统 · 基础版', en: 'Admin System · Starter' },
-      desc: {
-        zh: '含登录、注册、数据表格、图表、卡片布局与 404 页。结构轻，改起来快，适合中小型系统的管理端，三天内可上线内部版本。',
-        en: 'Login, registration, data tables, charts, card layouts and a 404 page. Lightweight and quick to adapt — an internal build can go live within three days.'
+      desc:  {
+        zh: '登录、注册、数据表格、图表与 404 页均已就位。结构轻，改起来快，适合中小型系统的管理端，内部版本三天内能上线。',
+        en: 'Login, registration, data tables, charts and a 404 page are all in place. Lightweight and quick to adapt — an internal build can go live within three days.'
       },
-      tags: ['Bootstrap 4', 'Chart.js', 'jQuery', 'Responsive'],
+      meta:  { zh: '8 个页面 · 含源码 · 3–7 天可交付', en: '8 pages · Source included · 3–7 days' },
+      tags: ['Bootstrap 4', 'Chart.js', 'jQuery'],
       href: 'admin-sb/index.html'
     },
     {
-      idx: '03', cls: 'c3',
-      kind: { zh: 'Admin / Complete', en: 'Admin / Complete' },
-      cat: { zh: '后台管理 · 完整版', en: 'Admin panel · Complete' },
+      img: 'covers/adminlte.jpg',
+      cat:   { zh: '后台管理 · 完整版', en: 'Admin panel · Complete' },
       title: { zh: '后台管理系统 · 完整版', en: 'Admin System · Complete' },
-      desc: {
-        zh: '多套皮肤、仪表盘、表单组件、邮箱、用户管理、日历与图表库的完整页面集。适合功能较重的业务系统，权限与报表可在此之上扩展。',
-        en: 'Multiple skins, dashboards, form components, mailbox, user management, calendar and chart libraries. Built for feature-heavy business systems with room for permissions and reporting.'
+      desc:  {
+        zh: '多套皮肤、仪表盘、表单组件、邮箱、用户管理、日历与图表库。适合功能较重的业务系统，权限体系和报表可以在此之上继续搭建。',
+        en: 'Multiple skins, dashboards, form components, mailbox, user management, calendar and chart libraries. Built for feature-heavy systems with room for permissions and reporting.'
       },
-      tags: ['Bootstrap 5', 'AdminLTE', 'UI Kit', 'Multi-skin'],
+      meta:  { zh: '40+ 页面 · 含源码 · 7–15 天可交付', en: '40+ pages · Source included · 7–15 days' },
+      tags: ['Bootstrap 5', 'AdminLTE', 'Multi-skin'],
       href: 'adminlte/index.html'
     }
   ];
 
   var T = {
     zh: {
-      brand: '项目案例', brandsub: 'Web / Mini Program / Admin',
+      brand: '项目案例', brandsub: '网站 / 小程序 / 后台',
       h1: '可交付的项目骨架',
-      lead: '每套都在这里说明交付范围、技术栈和维护边界。全部包含完整源码，不是效果图，可以直接在业务逻辑层改造。',
-      view: '查看演示',
+      lead: '每套都标明了交付范围、技术栈和维护边界。全部包含完整源码，可以直接在业务逻辑层改造，不是效果图。',
+      view: '查看演示 →',
       fstrong: '需要类似的项目？',
-      ftext: ' 把功能清单发我，我按模块拆解工期和报价。',
+      ftext: ' 把功能清单发我，按模块拆解工期和报价。',
       fmail: '邮箱：',
       title: '项目案例 · 网站 / 小程序 / 后台系统'
     },
     en: {
       brand: 'Work', brandsub: 'Web / Mini Program / Admin',
       h1: 'Deliverable project skeletons',
-      lead: 'Each entry states its scope, stack and maintenance boundary. All ship with full source code — not mockups — and can be adapted at the business-logic layer.',
-      view: 'View demo',
+      lead: 'Each entry states its scope, stack and maintenance boundary. All ship with full source code and can be adapted at the business-logic layer — these are working builds, not mockups.',
+      view: 'View demo →',
       fstrong: 'Need something similar?',
-      ftext: ' Send me your feature list and I will break it into scope, timeline and price.',
+      ftext: ' Send me your feature list and I will break it down into scope, timeline and price.',
       fmail: 'Email: ',
       title: 'Work · Websites / Mini Programs / Admin Systems'
     }
@@ -243,19 +194,16 @@
       if (t[k] !== undefined) n.textContent = t[k];
     });
 
-    var list = document.getElementById('list');
-    list.innerHTML = PROJECTS.map(function (p) {
+    document.getElementById('list').innerHTML = P.map(function (p) {
       var tags = p.tags.map(function (x) { return '<span class="tag">' + x + '</span>'; }).join('');
       return '<a class="item" href="' + p.href + '" target="_blank" rel="noopener">' +
-        '<div class="cover ' + p.cls + '"><div class="idx">' + p.idx + '</div>' +
-        '<div class="kind">' + p.kind[cur] + '</div></div>' +
-        '<div class="body">' +
-        '<div class="cat">' + p.cat[cur] + '</div>' +
+        '<span class="thumb"><img src="' + p.img + '" alt="" loading="lazy"></span>' +
+        '<div class="meta">' + p.cat[cur] + '　·　' + p.meta[cur] + '</div>' +
         '<h3>' + p.title[cur] + '</h3>' +
         '<p class="desc">' + p.desc[cur] + '</p>' +
-        '<div class="tags">' + tags + '</div>' +
-        '<div class="more"><span class="line"></span>' + t.view + '<span class="arw">→</span></div>' +
-        '</div></a>';
+        '<div class="row"><div class="tags">' + tags + '</div>' +
+        '<span class="view">' + t.view + '</span></div>' +
+        '</a>';
     }).join('');
 
     document.querySelectorAll('.lang-switch button').forEach(function (b) {
