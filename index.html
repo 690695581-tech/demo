@@ -3,139 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>案例演示 · 网站 / 小程序 / 后台系统</title>
+<title>项目案例 · 网站 / 小程序 / 后台系统</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
-    background: #f5f6f8;
-    color: #1a1a1a;
+    background: #fbfbfa;
+    color: #18181b;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
-  header { padding: 72px 0 56px; border-bottom: 1px solid #e5e7eb; }
-  .badge {
-    display: inline-block; font-size: 12px; letter-spacing: 1.5px;
-    color: #6b7280; text-transform: uppercase; margin-bottom: 20px;
-    border: 1px solid #dcdfe4; border-radius: 3px; padding: 4px 10px;
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,251,250,.82);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid #e8e8e5;
   }
-  h1 { font-size: 38px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 16px; }
-  .lead { font-size: 17px; color: #5b6270; max-width: 620px; }
-
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 56px 0; }
-
-  .card {
-    background: #fff; border: 1px solid #e8eaed; border-radius: 8px;
-    padding: 28px; display: flex; flex-direction: column;
-    transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+  .nav-in {
+    max-width: 860px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
   }
-  .card:hover {
-    box-shadow: 0 8px 28px rgba(20,25,40,.09);
+  .brand { font-size: 14.5px; font-weight: 600; letter-spacing: -0.2px; }
+  .brand span { color: #9a9a96; font-weight: 400; margin-left: 8px; font-size: 13px; }
+
+  .lang-switch {
+    display: inline-flex; background: #efefec; border-radius: 999px; padding: 3px;
+  }
+  .lang-switch button {
+    border: 0; background: transparent; cursor: pointer;
+    font-size: 12.5px; font-weight: 500; color: #71717a;
+    padding: 4px 13px; border-radius: 999px;
+    font-family: inherit; transition: all .18s ease;
+  }
+  .lang-switch button.active { background: #fff; color: #18181b; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 76px 0 52px; }
+  .hero h1 {
+    font-size: 40px; font-weight: 600; letter-spacing: -1px;
+    line-height: 1.25; margin-bottom: 20px;
+  }
+  .hero p { font-size: 15.5px; color: #63636b; max-width: 520px; line-height: 1.75; }
+
+  /* ---------- list ---------- */
+  .list { padding-bottom: 40px; display: flex; flex-direction: column; gap: 32px; }
+
+  .item {
+    display: block; text-decoration: none; color: inherit;
+    background: #fff; border: 1px solid #e8e8e5; border-radius: 12px;
+    overflow: hidden; transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
+  }
+  .item:hover {
     transform: translateY(-3px);
-    border-color: #d0d4da;
+    box-shadow: 0 12px 32px rgba(24,24,27,.08);
+    border-color: #d6d6d1;
   }
-  .num {
-    font-size: 12px; font-weight: 600; color: #9aa1ad;
-    letter-spacing: 1px; margin-bottom: 14px;
-  }
-  .card h2 { font-size: 19px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.2px; }
-  .card p { font-size: 14px; color: #5b6270; flex-grow: 1; margin-bottom: 20px; }
 
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+  .cover {
+    height: 216px; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid #eee;
+  }
+  .cover::after {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,.5) 1px, transparent 1px);
+    background-size: 20px 20px; opacity: .5;
+  }
+  .cover .idx {
+    position: relative; z-index: 1;
+    font-size: 76px; font-weight: 700; letter-spacing: -3px;
+    color: rgba(255,255,255,.9);
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  .cover .kind {
+    position: absolute; right: 20px; bottom: 16px; z-index: 1;
+    font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
+    color: rgba(255,255,255,.72);
+  }
+
+  .c1 { background: linear-gradient(135deg, #d98b3a 0%, #b5652c 55%, #8f4a20 100%); }
+  .c2 { background: linear-gradient(135deg, #4a6076 0%, #35485c 55%, #26323f 100%); }
+  .c3 { background: linear-gradient(135deg, #545c9c 0%, #3d4478 55%, #2b3054 100%); }
+
+  .body { padding: 24px 26px 26px; }
+  .cat { font-size: 12.5px; color: #8a8a85; margin-bottom: 8px; letter-spacing: .2px; }
+  .item h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .item .desc { font-size: 14px; color: #63636b; line-height: 1.7; margin-bottom: 16px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; }
   .tag {
-    font-size: 11.5px; color: #4b5563; background: #f3f4f6;
-    border-radius: 3px; padding: 3px 8px;
+    font-size: 11.5px; color: #52525b; background: #f4f4f1;
+    border: 1px solid #eaeae6; border-radius: 4px; padding: 2px 8px;
   }
 
-  .btn {
-    display: block; text-align: center; text-decoration: none;
-    font-size: 14px; font-weight: 500; color: #fff; background: #1f2937;
-    border-radius: 5px; padding: 11px 16px; transition: background .18s ease;
+  .more {
+    margin-top: 18px; display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.5px; font-weight: 500; color: #18181b;
   }
-  .btn:hover { background: #111827; }
+  .more .arw { transition: transform .2s ease; }
+  .item:hover .more .arw { transform: translateX(3px); }
+  .more .line {
+    display: inline-block; width: 18px; height: 1px; background: #c8c8c2;
+  }
 
+  /* ---------- footer ---------- */
   footer {
-    border-top: 1px solid #e5e7eb; padding: 40px 0 64px;
-    font-size: 14px; color: #5b6270;
+    border-top: 1px solid #e8e8e5; padding: 36px 0 64px;
+    font-size: 14px; color: #63636b;
   }
-  footer strong { color: #1a1a1a; font-weight: 600; }
-  .mail { font-family: ui-monospace, "SF Mono", Consolas, monospace; color: #1f2937; }
+  footer strong { color: #18181b; font-weight: 600; }
+  .mail {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    color: #18181b; text-decoration: none;
+    border-bottom: 1px solid #d4d4cf; padding-bottom: 1px;
+  }
+  .mail:hover { border-color: #18181b; }
 
-  @media (max-width: 860px) {
-    .grid { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
-    header { padding: 48px 0 36px; }
-    h1 { font-size: 28px; }
+  @media (max-width: 700px) {
+    .hero { padding: 52px 0 36px; }
+    .hero h1 { font-size: 29px; letter-spacing: -0.6px; }
+    .hero p { font-size: 14.5px; }
+    .cover { height: 168px; }
+    .cover .idx { font-size: 58px; }
+    .body { padding: 20px 20px 22px; }
+    .item h3 { font-size: 18px; }
+    .list { gap: 22px; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <div class="badge">Demo Gallery</div>
-    <h1>网站 / 小程序 / 后台系统</h1>
-    <p class="lead">
-      下面三套是可交付的工程骨架，不是静态效果图。每套都包含完整源码，
-      可以直接在业务逻辑层改造，替换成你的行业内容。
+<nav>
+  <div class="nav-in">
+    <div class="brand" data-i18n="brand">项目案例<span data-i18n="brandsub">Web / Mini Program / Admin</span></div>
+    <div class="lang-switch">
+      <button type="button" data-lang="zh" class="active">中文</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="hero">
+    <h1 data-i18n="h1">可交付的项目骨架</h1>
+    <p data-i18n="lead">
+      每套都在这里说明交付范围、技术栈和维护边界。全部包含完整源码，不是效果图，可以直接在业务逻辑层改造。
     </p>
-  </header>
+  </section>
 
-  <main class="grid">
-    <div class="card">
-      <div class="num">01</div>
-      <h2>企业官网</h2>
-      <p>单页式企业站，含响应式布局、滚动动效、作品展示与服务区块。适合公司官网、工作室主页、产品介绍页。</p>
-      <div class="tags">
-        <span class="tag">HTML5</span>
-        <span class="tag">Bootstrap 5</span>
-        <span class="tag">原生 JS</span>
-        <span class="tag">响应式</span>
-      </div>
-      <a class="btn" href="agency/index.html" target="_blank" rel="noopener">查看演示</a>
-    </div>
-
-    <div class="card">
-      <div class="num">02</div>
-      <h2>后台管理 · 基础版</h2>
-      <p>含登录、注册、数据表格、图表、卡片布局与 404 页。结构轻，改起来快，适合中小型系统的管理端。</p>
-      <div class="tags">
-        <span class="tag">Bootstrap 4</span>
-        <span class="tag">Chart.js</span>
-        <span class="tag">jQuery</span>
-        <span class="tag">响应式</span>
-      </div>
-      <a class="btn" href="admin-sb/index.html" target="_blank" rel="noopener">查看演示</a>
-    </div>
-
-    <div class="card">
-      <div class="num">03</div>
-      <h2>后台管理 · 完整版</h2>
-      <p>多套皮肤、仪表盘、表单组件、邮箱、用户管理、日历、图表的完整页面集。适合功能较重的业务系统。</p>
-      <div class="tags">
-        <span class="tag">Bootstrap 5</span>
-        <span class="tag">AdminLTE</span>
-        <span class="tag">组件库</span>
-        <span class="tag">多皮肤</span>
-      </div>
-      <a class="btn" href="adminlte/index.html" target="_blank" rel="noopener">查看演示</a>
-    </div>
-  </main>
+  <section class="list" id="list"></section>
 
   <footer>
     <p style="margin-bottom:10px">
-      <strong>需要类似的项目？</strong> 把功能清单发我，我按模块拆工期和报价。
+      <strong data-i18n="fstrong">需要类似的项目？</strong><span data-i18n="ftext"> 把功能清单发我，我按模块拆解工期和报价。</span>
     </p>
-    <p>邮箱：<span class="mail" id="mail"></span></p>
+    <p><span data-i18n="fmail">邮箱：</span><a class="mail" id="mail" href="#"></a></p>
   </footer>
-</div>
+</main>
 
 <script>
-  (function () {
-    var b = "a2F6YW15dXVqaTQ4NkBnbWFpbC5jb20=";
-    document.getElementById("mail").textContent = atob(b);
-  })();
+(function () {
+  var PROJECTS = [
+    {
+      idx: '01', cls: 'c1',
+      kind: { zh: 'Brand / Corporate', en: 'Brand / Corporate' },
+      cat: { zh: '企业官网 · 品牌展示', en: 'Corporate site · Brand' },
+      title: { zh: '企业官网', en: 'Corporate Website' },
+      desc: {
+        zh: '单页式企业站，含响应式布局、滚动入场动效、作品展示、服务区块与联系表单。适合公司官网、工作室主页、产品介绍页。',
+        en: 'Single-page corporate site with responsive layout, scroll-in animations, portfolio, services and contact form. Suited to company sites, studio homepages and product pages.'
+      },
+      tags: ['HTML5', 'Bootstrap 5', 'Vanilla JS', 'Responsive'],
+      href: 'agency/index.html'
+    },
+    {
+      idx: '02', cls: 'c2',
+      kind: { zh: 'Admin / Starter', en: 'Admin / Starter' },
+      cat: { zh: '后台管理 · 基础版', en: 'Admin panel · Starter' },
+      title: { zh: '后台管理系统 · 基础版', en: 'Admin System · Starter' },
+      desc: {
+        zh: '含登录、注册、数据表格、图表、卡片布局与 404 页。结构轻，改起来快，适合中小型系统的管理端，三天内可上线内部版本。',
+        en: 'Login, registration, data tables, charts, card layouts and a 404 page. Lightweight and quick to adapt — an internal build can go live within three days.'
+      },
+      tags: ['Bootstrap 4', 'Chart.js', 'jQuery', 'Responsive'],
+      href: 'admin-sb/index.html'
+    },
+    {
+      idx: '03', cls: 'c3',
+      kind: { zh: 'Admin / Complete', en: 'Admin / Complete' },
+      cat: { zh: '后台管理 · 完整版', en: 'Admin panel · Complete' },
+      title: { zh: '后台管理系统 · 完整版', en: 'Admin System · Complete' },
+      desc: {
+        zh: '多套皮肤、仪表盘、表单组件、邮箱、用户管理、日历与图表库的完整页面集。适合功能较重的业务系统，权限与报表可在此之上扩展。',
+        en: 'Multiple skins, dashboards, form components, mailbox, user management, calendar and chart libraries. Built for feature-heavy business systems with room for permissions and reporting.'
+      },
+      tags: ['Bootstrap 5', 'AdminLTE', 'UI Kit', 'Multi-skin'],
+      href: 'adminlte/index.html'
+    }
+  ];
+
+  var T = {
+    zh: {
+      brand: '项目案例', brandsub: 'Web / Mini Program / Admin',
+      h1: '可交付的项目骨架',
+      lead: '每套都在这里说明交付范围、技术栈和维护边界。全部包含完整源码，不是效果图，可以直接在业务逻辑层改造。',
+      view: '查看演示',
+      fstrong: '需要类似的项目？',
+      ftext: ' 把功能清单发我，我按模块拆解工期和报价。',
+      fmail: '邮箱：',
+      title: '项目案例 · 网站 / 小程序 / 后台系统'
+    },
+    en: {
+      brand: 'Work', brandsub: 'Web / Mini Program / Admin',
+      h1: 'Deliverable project skeletons',
+      lead: 'Each entry states its scope, stack and maintenance boundary. All ship with full source code — not mockups — and can be adapted at the business-logic layer.',
+      view: 'View demo',
+      fstrong: 'Need something similar?',
+      ftext: ' Send me your feature list and I will break it into scope, timeline and price.',
+      fmail: 'Email: ',
+      title: 'Work · Websites / Mini Programs / Admin Systems'
+    }
+  };
+
+  var cur = 'zh';
+
+  function render(lang) {
+    cur = T[lang] ? lang : 'zh';
+    var t = T[cur];
+    document.documentElement.lang = (cur === 'zh') ? 'zh-CN' : 'en';
+    document.title = t.title;
+
+    document.querySelectorAll('[data-i18n]').forEach(function (n) {
+      var k = n.getAttribute('data-i18n');
+      if (t[k] !== undefined) n.textContent = t[k];
+    });
+
+    var list = document.getElementById('list');
+    list.innerHTML = PROJECTS.map(function (p) {
+      var tags = p.tags.map(function (x) { return '<span class="tag">' + x + '</span>'; }).join('');
+      return '<a class="item" href="' + p.href + '" target="_blank" rel="noopener">' +
+        '<div class="cover ' + p.cls + '"><div class="idx">' + p.idx + '</div>' +
+        '<div class="kind">' + p.kind[cur] + '</div></div>' +
+        '<div class="body">' +
+        '<div class="cat">' + p.cat[cur] + '</div>' +
+        '<h3>' + p.title[cur] + '</h3>' +
+        '<p class="desc">' + p.desc[cur] + '</p>' +
+        '<div class="tags">' + tags + '</div>' +
+        '<div class="more"><span class="line"></span>' + t.view + '<span class="arw">→</span></div>' +
+        '</div></a>';
+    }).join('');
+
+    document.querySelectorAll('.lang-switch button').forEach(function (b) {
+      b.className = (b.getAttribute('data-lang') === cur) ? 'active' : '';
+    });
+
+    try { localStorage.setItem('demo_lang', cur); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(function (b) {
+    b.addEventListener('click', function () { render(this.getAttribute('data-lang')); });
+  });
+
+  var saved = 'zh';
+  try { saved = localStorage.getItem('demo_lang') || 'zh'; } catch (e) {}
+  render(saved);
+
+  var addr = atob('a2F6YW15dXVqaTQ4NkBnbWFpbC5jb20=');
+  var m = document.getElementById('mail');
+  m.textContent = addr;
+  m.href = 'mailto:' + addr;
+})();
 </script>
 
 </body>
