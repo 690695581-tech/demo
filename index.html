@@ -55,6 +55,7 @@
     display: block; transition: opacity .2s ease;
   }
   .item:hover .thumb { border-color: #c9c9c9; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+  .thumb.phone img { object-fit: contain; background: #f4f4f2; }
   .item:hover .thumb img { opacity: .94; }
 
   .meta { font-size: 12.5px; color: #8c8c8c; margin: 16px 0 6px; }
@@ -126,23 +127,36 @@
       title: { zh: '企业官网', en: 'Corporate Website' },
       desc:  {
         zh: '单页式企业站，含响应式布局、滚动入场动效、作品展示、服务区块与联系表单。适合公司官网、工作室主页、产品介绍页。',
-        en: 'Single-page corporate site with responsive layout, scroll-in animations, portfolio, services and a contact form. Suited to company sites, studio homepages and product pages.'
+        en: 'Single-page corporate site with responsive layout, scroll-in animations, portfolio, services and a contact form. Suited to company sites and studio homepages.'
       },
       meta:  { zh: '单页 · 含源码 · 3–5 天可交付', en: 'Single page · Source included · 3–5 days' },
       tags: ['HTML5', 'Bootstrap 5', 'Vanilla JS'],
       href: 'agency/index.html'
     },
     {
-      img: 'covers/sb-admin.jpg',
-      cat:   { zh: '后台管理 · 基础版', en: 'Admin panel · Starter' },
-      title: { zh: '后台管理系统 · 基础版', en: 'Admin System · Starter' },
+      img: 'covers/shop.jpg',
+      cat:   { zh: '电商商城 · 商品与下单流程', en: 'E-commerce · Catalog and checkout' },
+      title: { zh: '电商商城', en: 'E-commerce Store' },
       desc:  {
-        zh: '登录、注册、数据表格、图表与 404 页均已就位。结构轻，改起来快，适合中小型系统的管理端，内部版本三天内能上线。',
-        en: 'Login, registration, data tables, charts and a 404 page are all in place. Lightweight and quick to adapt — an internal build can go live within three days.'
+        zh: '分类导航、商品列表、详情页、购物车、结算与会员中心都已就位。九个页面完整跑通从浏览到下单的链路。',
+        en: 'Category navigation, product listing, detail page, cart, checkout and account centre. Nine pages covering the whole path from browsing to order.'
       },
-      meta:  { zh: '8 个页面 · 含源码 · 3–7 天可交付', en: '8 pages · Source included · 3–7 days' },
-      tags: ['Bootstrap 4', 'Chart.js', 'jQuery'],
-      href: 'admin-sb/index.html'
+      meta:  { zh: '9 个页面 · 含源码 · 5–10 天可交付', en: '9 pages · Source included · 5–10 days' },
+      tags: ['Tailwind CSS', 'HTML5', 'Vanilla JS'],
+      href: 'shop/index.html'
+    },
+    {
+      img: 'covers/mobile.jpg',
+      phone: true,
+      cat:   { zh: '移动端 · 手机商城', en: 'Mobile · Storefront' },
+      title: { zh: '移动端商城', en: 'Mobile Storefront' },
+      desc:  {
+        zh: '手机宽度下的商品浏览与购物流程，含轮播、分类、商品详情与购物车。适合小程序上线前的 H5 版本，或移动端导购页。',
+        en: 'Product browsing and checkout at phone width, with carousel, categories, detail and cart. Suits an H5 build before a mini program ships.'
+      },
+      meta:  { zh: '3 个页面 · 含源码 · 3–5 天可交付', en: '3 pages · Source included · 3–5 days' },
+      tags: ['Bootstrap 4', 'Owl Carousel', 'Mobile'],
+      href: 'mobile/index.html'
     },
     {
       img: 'covers/adminlte.jpg',
@@ -155,6 +169,18 @@
       meta:  { zh: '40+ 页面 · 含源码 · 7–15 天可交付', en: '40+ pages · Source included · 7–15 days' },
       tags: ['Bootstrap 5', 'AdminLTE', 'Multi-skin'],
       href: 'adminlte/index.html'
+    },
+    {
+      img: 'covers/sb-admin.jpg',
+      cat:   { zh: '后台管理 · 基础版', en: 'Admin panel · Starter' },
+      title: { zh: '后台管理系统 · 基础版', en: 'Admin System · Starter' },
+      desc:  {
+        zh: '登录、注册、数据表格、图表与 404 页均已就位。结构轻，改起来快，适合中小型系统的管理端，内部版本三天内能上线。',
+        en: 'Login, registration, data tables, charts and a 404 page are all in place. Lightweight and quick to adapt — an internal build can go live within three days.'
+      },
+      meta:  { zh: '8 个页面 · 含源码 · 3–7 天可交付', en: '8 pages · Source included · 3–7 days' },
+      tags: ['Bootstrap 4', 'Chart.js', 'jQuery'],
+      href: 'admin-sb/index.html'
     }
   ];
 
@@ -197,7 +223,7 @@
     document.getElementById('list').innerHTML = P.map(function (p) {
       var tags = p.tags.map(function (x) { return '<span class="tag">' + x + '</span>'; }).join('');
       return '<a class="item" href="' + p.href + '" target="_blank" rel="noopener">' +
-        '<span class="thumb"><img src="' + p.img + '" alt="" loading="lazy"></span>' +
+        '<span class="thumb' + (p.phone ? ' phone' : '') + '"><img src="' + p.img + '" alt="" loading="lazy"></span>' +
         '<div class="meta">' + p.cat[cur] + '　·　' + p.meta[cur] + '</div>' +
         '<h3>' + p.title[cur] + '</h3>' +
         '<p class="desc">' + p.desc[cur] + '</p>' +
