@@ -546,3 +546,65 @@ hr { border-color: var(--fluent-border); opacity: 1; }
   background-color: var(--fluent-subtle) !important;
   color: #111 !important;
 }
+
+/* ---- SB Admin 侧栏图标与文字：用 ID 选择器压过原规则 ---- */
+#sidebar-wrapper .nav-item .nav-link i,
+#sidebar-wrapper .nav-link i,
+#sidebar-wrapper .nav-item .nav-link.collapsed i,
+.sidebar .nav-item .nav-link i {
+  color: #4a4846 !important;
+  opacity: 1 !important;
+  width: 1.1rem;
+  text-align: center;
+}
+#sidebar-wrapper .nav-item .nav-link.active i,
+.sidebar .nav-item .nav-link.active i {
+  color: var(--fluent-accent) !important;
+}
+#sidebar-wrapper .nav-item .nav-link span,
+#sidebar-wrapper .nav-item .nav-link.collapsed span,
+.sidebar .nav-item .nav-link span {
+  color: #3b3a38 !important;
+  font-size: 13.5px;
+}
+#sidebar-wrapper .nav-item .nav-link.active span,
+.sidebar .nav-item .nav-link.active span {
+  color: var(--fluent-accent-pressed) !important;
+  font-weight: 600;
+}
+#sidebar-wrapper .nav-link.collapsed,
+.sidebar .nav-link.collapsed {
+  color: #3b3a38 !important;
+}
+
+/* ---- 正确的侧栏 ID：accordionSidebar ---- */
+#accordionSidebar .nav-item .nav-link i,
+#accordionSidebar .nav-link i,
+#accordionSidebar .nav-item .nav-link.collapsed i {
+  color: #4a4846 !important;
+  opacity: 1 !important;
+  width: 1.1rem;
+  text-align: center;
+  font-size: .85rem;
+}
+#accordionSidebar .nav-item .nav-link.active i {
+  color: var(--fluent-accent) !important;
+}
+#accordionSidebar .nav-item .nav-link span,
+#accordionSidebar .nav-item .nav-link.collapsed span {
+  color: #3b3a38 !important;
+  font-size: 13.5px;
+}
+#accordionSidebar .nav-item .nav-link.active span {
+  color: var(--fluent-accent-pressed) !important;
+  font-weight: 600;
+}
+#accordionSidebar .nav-link.collapsed,
+#accordionSidebar .nav-link {
+  color: #3b3a38 !important;
+}
+#accordionSidebar .collapse-item,
+#accordionSidebar .collapse .nav-link {
+  color: #52504e !important;
+  border-radius: var(--fluent-radius);
+}
