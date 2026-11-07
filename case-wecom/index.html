@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业微信客服统计 · 项目案例</title>
+<style>
+  ::selection { background: #ebebeb; }
+  :root {
+    --text: #18181b;
+    --text-2: #52525b;
+    --text-3: #a1a1aa;
+    --line: #e7e7e5;
+    --bg: #fff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei UI",
+                 "Microsoft YaHei", sans-serif;
+    font-size: 15px; line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 96px; }
+
+  .top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .back {
+    color: var(--text-2); text-decoration: none; font-size: 14px;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .back:hover { color: var(--text); }
+  .lang { display: flex; gap: 4px; font-size: 13px; }
+  .lang button {
+    background: none; border: none; padding: 2px 7px; cursor: pointer;
+    color: var(--text-3); font-family: inherit; font-size: 13px; border-radius: 4px;
+  }
+  .lang button.on { color: var(--text); background: #f4f4f2; font-weight: 600; }
+
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.6px; line-height: 1.35; }
+  .sub { color: var(--text-2); margin-top: 10px; font-size: 15px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
+  .tag {
+    font-size: 12px; color: var(--text-2); background: #f7f7f5;
+    border: 1px solid var(--line); border-radius: 4px; padding: 3px 9px;
+  }
+
+  .meta {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+    border-radius: 6px; overflow: hidden; margin: 32px 0 40px;
+  }
+  .meta div { background: #fff; padding: 14px 16px; }
+  .meta .k { font-size: 12px; color: var(--text-3); margin-bottom: 2px; }
+  .meta .v { font-size: 14px; font-weight: 600; letter-spacing: -0.1px; }
+
+  h2 {
+    font-size: 15px; font-weight: 600; letter-spacing: -0.1px;
+    margin: 44px 0 14px; padding-top: 26px; border-top: 1px solid var(--line);
+  }
+  p { color: var(--text-2); margin-bottom: 14px; }
+  p b { color: var(--text); font-weight: 600; }
+  p code, .note code {
+    font-family: ui-monospace, Consolas, "Courier New", monospace;
+    font-size: 12.5px; line-height: 1.4;
+    background: #f4f4f2; border: 1px solid var(--line); border-radius: 3px;
+    padding: 1px 5px; color: #b91c1c; word-break: break-all;
+  }
+
+  ul { margin: 0 0 14px 18px; color: var(--text-2); }
+  li { margin-bottom: 7px; }
+  li b { color: var(--text); font-weight: 600; }
+
+  figure { margin: 26px 0 8px; }
+  figure img {
+    width: 100%; display: block; border: 1px solid var(--line); border-radius: 6px;
+  }
+  figcaption { font-size: 12.5px; color: var(--text-3); margin-top: 9px; }
+
+  .note {
+    background: #fbfbfa; border: 1px solid var(--line); border-radius: 6px;
+    padding: 14px 16px; font-size: 13.5px; color: var(--text-2); margin: 20px 0;
+  }
+  .note b { color: var(--text); }
+
+  footer {
+    margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--text-3);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  footer a { color: var(--text-2); text-decoration: none; }
+  footer a:hover { color: var(--text); text-decoration: underline; }
+
+  [data-en] { display: none; }
+  body.en [data-zh] { display: none; }
+  body.en [data-en] { display: block; }
+  body.en span[data-en] { display: inline; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 28px 16px 64px; }
+    h1 { font-size: 22px; }
+    .meta { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <a class="back" href="../index.html">
+      <span data-zh>← 返回案例列表</span><span data-en>← All projects</span>
+    </a>
+    <div class="lang">
+      <button id="btnZh" class="on">中文</button>
+      <button id="btnEn">EN</button>
+    </div>
+  </div>
+
+  <h1 data-zh>企业微信客服统计</h1>
+  <h1 data-en>WeCom Customer-Service Monitor</h1>
+
+  <div class="sub" data-zh>本地桌面工具 · 多账号数据采集与自动归档</div>
+  <div class="sub" data-en>Desktop tool · multi-account data collection and archiving</div>
+
+  <div class="tags">
+    <span class="tag">Python</span>
+    <span class="tag">PyInstaller</span>
+    <span class="tag">openpyxl</span>
+    <span class="tag">Cookie Session</span>
+    <span class="tag">Windows</span>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="k" data-zh>交付形态</div><div class="k" data-en>Delivery</div>
+      <div class="v" data-zh>免安装 exe，33 MB</div><div class="v" data-en>Portable exe, 33 MB</div>
+    </div>
+    <div>
+      <div class="k" data-zh>同时监控</div><div class="k" data-en>Accounts</div>
+      <div class="v" data-zh>5 个独立后台</div><div class="v" data-en>5 independent tenants</div>
+    </div>
+    <div>
+      <div class="k" data-zh>交付周期</div><div class="k" data-en>Timeline</div>
+      <div class="v" data-zh>2 天</div><div class="v" data-en>2 days</div>
+    </div>
+  </div>
+
+  <h2 data-zh>背景</h2>
+  <h2 data-en>Background</h2>
+
+  <p data-zh>
+    客户的客服团队分在 <b>5 个完全独立的企业微信后台</b>里（不是同一企业的多个账号，corpid 各不相同），
+    每天需要汇总每个客服号「接待中的会话数」和「成员客户数」，人工逐个后台抄表，
+    5 个号抄一遍十几分钟，还容易漏。
+  </p>
+  <p data-en>
+    The client's support team is spread across <b>five entirely separate WeCom tenants</b>
+    (different corp IDs, not multiple accounts under one company). Someone had to log into
+    each back office and copy the session counts by hand — a ten-minute chore that was easy to get wrong.
+  </p>
+
+  <h2 data-zh>做了什么</h2>
+  <h2 data-en>What was built</h2>
+
+  <ul data-zh>
+    <li><b>多后台并行采集</b>：每个客服号一套独立的登录态，各自请求、互不影响。一个号掉线，其余四个照常跑。</li>
+    <li><b>随机间隔调度</b>：5–10 分钟之间随机取，避免请求节奏过于规律被风控识别。</li>
+    <li><b>Cookie 保活</b>：独立线程每 30 分钟对每个后台发一次心跳，让登录态保持活跃，同时提前发现掉线。</li>
+    <li><b>失效即隔离</b>：登录态失效的账号立刻标红并暂停请求，不会反复重试把问题放大。被封的账号可一键停用。</li>
+    <li><b>桌面自动归档</b>：每轮结果写进桌面 Excel，同一文件覆盖更新，最新的那组标红加粗。</li>
+    <li><b>免安装</b>：Python 运行时一起打包，客户电脑不用装任何环境，双击即用。</li>
+  </ul>
+
+  <ul data-en>
+    <li><b>Parallel collection</b> across tenants — each with its own session, one dropping out doesn't affect the others.</li>
+    <li><b>Randomised scheduling</b> between 5 and 10 minutes so the request rhythm stays irregular.</li>
+    <li><b>Session keep-alive</b> — a separate thread pings each back office every 30 minutes, keeping the login alive and surfacing failures early.</li>
+    <li><b>Failure isolation</b> — an expired session is flagged and paused immediately instead of being retried into a lockout. Banned accounts can be disabled in one click.</li>
+    <li><b>Automatic archiving</b> — every round is written to an Excel file on the desktop, overwritten in place, with the newest batch highlighted.</li>
+    <li><b>Zero install</b> — the Python runtime is bundled; double-click and it runs.</li>
+  </ul>
+
+  <figure>
+    <img src="shot-1.jpg" alt="账号管理面板">
+    <figcaption data-zh>账号管理：一行一个客服号，Cookie 状态、当前接待量、最后成功时间一目了然。底部是导入、批量测试、诊断。</figcaption>
+    <figcaption data-en>Account panel — one row per account with session status, live session count and last success. Import, bulk test and diagnostics sit at the bottom.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="shot-2.jpg" alt="数据表格">
+    <figcaption data-zh>数据面板：按客服号分组，每组头部显示该号接待合计与更新时间，组内从新到旧排列。</figcaption>
+    <figcaption data-en>Data view — grouped by account, with each group header showing the running total and last update, newest row first.</figcaption>
+  </figure>
+
+  <h2 data-zh>一个技术上的坎</h2>
+  <h2 data-en>One thing that bit us</h2>
+
+  <p data-zh>
+    后台接口在登录态失效时，返回的是 <b>HTTP 200</b> 加一段
+    <code>{"result":{"errCode":-3,"message":"outsession"}}</code>，
+    字段名是大写 <code>C</code>，而且不在常规的 <code>errcode</code> 位置上。
+  </p>
+  <p data-en>
+    When the session dies, the endpoint still answers <b>HTTP 200</b> with
+    <code>{"result":{"errCode":-3,"message":"outsession"}}</code> — note the capital <code>C</code>,
+    sitting outside the usual <code>errcode</code> field.
+  </p>
+
+  <div class="note" data-zh>
+    只判断 <code>errcode</code> 的话，会把「掉线」当成「今天没有数据」，<b>表面抓取成功，实际全是空的</b>。
+    这类错误最难发现，因为程序不报错。现在改成单独判断 <code>result.errCode</code>，
+    并且区分「网络抖动」和「确定失效」：前者重试 3 次，后者立刻标记。
+  </div>
+  <div class="note" data-en>
+    Checking only <code>errcode</code> reads "logged out" as "no data today" — <b>the run looks successful while
+    producing nothing</b>. That's the worst kind of bug because nothing throws. It now reads
+    <code>result.errCode</code> separately and treats network flakiness (retry three times) differently
+    from a confirmed expiry (flag at once).
+  </div>
+
+  <h2 data-zh>说明</h2>
+  <h2 data-en>Notes</h2>
+
+  <p data-zh>
+    截图里的账号名已做脱敏处理。工具只读取数据，不会对后台做任何写操作。
+  </p>
+  <p data-en>
+    Account names in the screenshots have been anonymised. The tool is read-only — it never writes to the back office.
+  </p>
+
+  <footer>
+    <span data-zh>需要类似的东西？聊聊看。</span>
+    <span data-en>Need something similar? Let's talk.</span>
+    <a href="../index.html" data-zh>其他案例 →</a>
+    <a href="../index.html" data-en>Other projects →</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var KEY = "lang_case_wecom";
+  var zh = document.getElementById("btnZh");
+  var en = document.getElementById("btnEn");
+
+  function apply(lang) {
+    var isEn = lang === "en";
+    document.body.classList.toggle("en", isEn);
+    document.documentElement.lang = isEn ? "en" : "zh-CN";
+    zh.classList.toggle("on", !isEn);
+    en.classList.toggle("on", isEn);
+    document.title = isEn
+      ? "WeCom Customer-Service Monitor · Project"
+      : "企业微信客服统计 · 项目案例";
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+
+  zh.onclick = function () { apply("zh"); };
+  en.onclick = function () { apply("en"); };
+
+  var saved = "zh";
+  try { saved = localStorage.getItem(KEY) || "zh"; } catch (e) {}
+  apply(saved);
+})();
+</script>
+</body>
+</html>

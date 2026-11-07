@@ -122,6 +122,18 @@
 (function () {
   var P = [
     {
+      img: 'covers/wecom.jpg',
+      cat:   { zh: '桌面工具 · 数据采集', en: 'Desktop tool · Data collection' },
+      title: { zh: '企业微信客服统计', en: 'WeCom Support Monitor' },
+      desc:  {
+        zh: '五个完全独立的企业微信后台，5–10 分钟一轮自动采集接待数据，汇到桌面 Excel。含 Cookie 保活、失效隔离、多账号批量管理，免安装 exe 双击即用。',
+        en: 'Five separate WeCom tenants polled on a randomised 5–10 minute cycle into a desktop Excel file. Session keep-alive, failure isolation and bulk account management — a portable exe, no install needed.'
+      },
+      meta:  { zh: '免安装 exe · 2 天交付', en: 'Portable exe · 2 days' },
+      tags: ['Python', 'PyInstaller', 'openpyxl'],
+      href: 'case-wecom/index.html'
+    },
+    {
       img: 'covers/agency.jpg',
       cat:   { zh: '企业官网 · 品牌展示', en: 'Corporate site · Brand' },
       title: { zh: '企业官网', en: 'Corporate Website' },
@@ -190,6 +202,7 @@
       h1: '可交付的项目骨架',
       lead: '每个案例都可以直接点开操作，不是效果图。源码完整交付，交付范围和工期写在每一栏下面。',
       view: '查看演示 →',
+      viewDetail: '查看详情 →',
       fstrong: '需要类似的项目？',
       ftext: ' 把功能清单发我，按模块拆解工期和报价。',
       fmail: '邮箱：',
@@ -200,6 +213,7 @@
       h1: 'Deliverable project skeletons',
       lead: 'Every case is live and clickable — not a mockup. Full source is delivered, and each entry states its scope and timeline.',
       view: 'View demo →',
+      viewDetail: 'Read more →',
       fstrong: 'Need something similar?',
       ftext: ' Send me your feature list and I will break it down into scope, timeline and price.',
       fmail: 'Email: ',
@@ -228,7 +242,7 @@
         '<h3>' + p.title[cur] + '</h3>' +
         '<p class="desc">' + p.desc[cur] + '</p>' +
         '<div class="row"><div class="tags">' + tags + '</div>' +
-        '<span class="view">' + t.view + '</span></div>' +
+        '<span class="view">' + (/^case-/.test(p.href) ? t.viewDetail : t.view) + '</span></div>' +
         '</a>';
     }).join('');
 
